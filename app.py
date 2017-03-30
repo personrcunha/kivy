@@ -1,24 +1,29 @@
-'''
-Application example using build() + return
-==========================================
+import os
 
-An application can be built if you return a widget on build(), or if you set
-self.root.
-'''
+import kivy.app
+from kivy.lang import Builder
+from kivy.uix.screenmanager import Screen
 
-import kivy
-kivy.require('1.0.7')
+Builder.load_string("""
+<HelloWorldScreen>:
+    BoxLayout:
+        Label:
+            text: 'Hello World'
+        Button:
+            text: 'Quit'
+            on_press:
+                self.parent.parent.quit()
 
-from kivy.app import App
-from kivy.uix.button import Button
-
-
-class TestApp(App):
-
-    def build(self):
-        # return a Button() as a root widget
-        return Button(text='hello world')
+""")
 
 
-if __name__ == '__main__':
-    TestApp().run()
+class HelloWorldScreen(Screen):
+
+    def quit(self):
+        """Switch back to the loader screen."""
+        app = kivy.app.App.get_running_app()
+        landing_screen = app.reset_landing_screen()
+        self.manager.switch_to(landing_screen)
+
+def run():
+    return HelloWorldScreen()
