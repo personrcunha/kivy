@@ -8,9 +8,9 @@ Builder.load_string("""
 <HelloWorldScreen>:
     BoxLayout:
         Label:
-            text: 'Hello World'
+            text: 'Ola Mundo'
         Button:
-            text: 'Quit'
+            text: 'Sair'
             on_press:
                 self.parent.parent.quit()
 
