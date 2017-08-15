@@ -8,7 +8,7 @@ Builder.load_string("""
 <HelloWorldScreen>:
     BoxLayout:
         Label:
-            text: 'Ola Mundo'
+            text: 'Bem Vindo'
         Button:
             text: 'Sair'
             on_press:
